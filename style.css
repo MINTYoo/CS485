@@ -1,0 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Protest+Riot&display=swap');
+*{
+margin: 0;
+padding: 0;
+font-family: 'Protest Riot', sans-serif;
+
+}
+body{
+ 
+}
+
+.welcome{
+    position: relative;
+    text-align: center;
+    background-color: rgb(35, 35, 37);
+    color: azure;
+    font-size: larger;
+    height: 50px;
+    padding-top: 50px;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(28, 26, 32);
+    width: 100%;
+    align-items: center;
+    padding-top: 50px;
+    color: white;
+}
+.input-section{
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    border: solid;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+
+
+
+.input-section{
+    #input-button{
+        background-color: aqua;
+    }
+}

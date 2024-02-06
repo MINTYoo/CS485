@@ -1,0 +1,13 @@
+{
+    "start": "welcome",
+    "states": {
+        "introduction state": "intro",
+        "next decision state": "next move",
+        "stim change": "stim",
+        "dope change": "dope",
+        "add stim point": "add stim",
+        "add dope point": "add dope"
+    },
+    "intro": "welcome to the game",
+    "next move": "make move"
+}
