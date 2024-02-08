@@ -1,13 +1,90 @@
 {
-    "start": "welcome",
-    "states": {
-        "introduction state": "intro",
-        "next decision state": "next move",
-        "stim change": "stim",
-        "dope change": "dope",
-        "add stim point": "add stim",
-        "add dope point": "add dope"
+    "start": {
+      "message": "Welcome to the Text Adventure Game! You wake up in a mysterious room. What would you like to do?",
+      "choices": [
+        {
+          "text": "Look around the room",
+          "next": "lookAround"
+        },
+        {
+          "text": "Try to open the door",
+          "next": "tryOpenDoor"
+        }
+      ]
     },
-    "intro": "welcome to the game",
-    "next move": "make move"
-}
+    "lookAround": {
+      "message": "You see a table, a chair, and a chest in the room. What would you like to do?",
+      "choices": [
+        {
+          "text": "Examine the table",
+          "next": "examineTable"
+        },
+        {
+          "text": "Sit on the chair",
+          "next": "sitOnChair"
+        },
+        {
+          "text": "Open the chest",
+          "next": "openChest"
+        }
+      ]
+    },
+    "tryOpenDoor": {
+      "message": "The door is locked. You need a key to open it.",
+      "choices": [
+        {
+          "text": "Go back",
+          "next": "start"
+        }
+      ]
+    },
+    "examineTable": {
+      "message": "You find a key on the table!",
+      "choices": [
+        {
+          "text": "Take the key",
+          "next": "takeKey"
+        },
+        {
+          "text": "Leave it",
+          "next": "lookAround"
+        }
+      ]
+    },
+    "takeKey": {
+      "message": "You take the key. Now, what would you like to do?",
+      "choices": [
+        {
+          "text": "Try to open the door",
+          "next": "tryOpenDoorWithKey"
+        },
+        {
+          "text": "Continue exploring the room",
+          "next": "lookAround"
+        }
+      ]
+    },
+    "tryOpenDoorWithKey": {
+      "message": "You use the key to open the door. Congratulations, you've escaped the room!",
+      "choices": []
+    },
+    "sitOnChair": {
+      "message": "You sit on the chair and take a rest.",
+      "choices": [
+        {
+          "text": "Get up and continue exploring the room",
+          "next": "lookAround"
+        }
+      ]
+    },
+    "openChest": {
+      "message": "The chest is empty.",
+      "choices": [
+        {
+          "text": "Go back",
+          "next": "lookAround"
+        }
+      ]
+    }
+  }
+  

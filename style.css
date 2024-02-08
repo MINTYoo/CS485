@@ -4,12 +4,13 @@
 margin: 0;
 padding: 0;
 font-family: 'Protest Riot', sans-serif;
-
-}
-body{
- 
 }
 
+.input-container, html, body {
+  height: 100%;
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Stack children vertically */
+}
 .welcome{
     position: relative;
     text-align: center;
@@ -23,31 +24,85 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: rgb(28, 26, 32);
+    background: linear-gradient(#e66465, #9198e5);
     width: 100%;
     align-items: center;
     padding-top: 50px;
     color: white;
+    flex: 1;
 }
 .input-section{
     margin-top: 50px;
     justify-content: center;
+    background-color: aliceblue;
     align-items: center;
     height: 500px;
     width: 500px;
-    border: solid;
+    text-align: center;
+    border-width: 5px;
+    border-style:solid ;
+    Border-color: black;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 20px;
-    color: white;
+    color: rgb(255, 255, 255);
+
 }
 
 
+.input{
+    background-color: #3b3a3a;
+    width: 200px;
+    border-radius: 10px;
+}
 
+/* CSS */
+.input-button{
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
 
-.input-section{
-    #input-button{
-        background-color: aqua;
-    }
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}   
+
+.choice__section{
+visibility: hidden;
 }
