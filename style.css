@@ -56,11 +56,20 @@ font-family: 'Protest Riot', sans-serif;
   width: 500px;
   border-radius: 10px;
   margin-top: auto;
+  display: flex;
+  justify-content: space-between; /* Distributes items along the main axis with space between */
+  align-items: center; /* Centers items along the cross axis */
   margin-bottom: 10px;
 }
 
-/* CSS */
+.input__text {
+  flex-grow: 1; /* Allow the text to grow to take remaining space */
+  border-radius: 10px;
+  padding: 10px;
+}
 
+
+/* CSS */
 .input-button{
   align-items: center;
   appearance: none;

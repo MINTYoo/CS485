@@ -1,5 +1,5 @@
 let state = "start"; //global variable to keep track of user state
-
+let message = false;
 function startGame(event, getStart, choiceSection, getData) {
     event.preventDefault();
     handleChoices(getStart);
@@ -20,9 +20,15 @@ function createElement(parent, choice, data) {
     newButton.textContent = choice.next; // Button text should match choice text
     newButton.classList.add("input-button");
 
+    if(!message){
+    const createWelcome = document.createElement("h1")
+    createWelcome.textContent = data[state].message
+    parent.appendChild(createWelcome)
+    message = true;
+    }
+    
     newDiv.appendChild(newStrongTag);
     newDiv.appendChild(newButton);
-
     parent.appendChild(newDiv);
 
     newButton.addEventListener('click', (event) => {
@@ -35,6 +41,7 @@ function createElement(parent, choice, data) {
 async function getNextChoice(data) {
     const choiceSection = document.querySelector('.choice__section');
     choiceSection.innerHTML = '';
+    message = false
     renderChoices(choiceSection, data[state], data);
     // Check if the game is completed
     if (gameCompleted(data[state])) {
@@ -67,12 +74,9 @@ function handleGameCompletion() {
 async function initgame() {
     try {
         const dataResponse = await fetch("game.json");
-        const createWelcome = document.createElement('h1')
         const gameData = await dataResponse.json();
         const getStart = document.querySelector('.start__button');
         const choiceSection = document.querySelector('.choice__section');
-        createWelcome.textContent = gameData['start'].message
-        choiceSection.appendChild(createWelcome)
         getStart.addEventListener('click', (event) => {
         
             startGame(event, getStart, choiceSection, gameData);
