@@ -1,6 +1,6 @@
-let state = "start";
+let state = "start"; //global variable to keep track of user state
 
-async function startGame(event, getStart, choiceSection, getData) {
+function startGame(event, getStart, choiceSection, getData) {
     event.preventDefault();
     handleChoices(getStart);
     
@@ -67,10 +67,14 @@ function handleGameCompletion() {
 async function initgame() {
     try {
         const dataResponse = await fetch("game.json");
+        const createWelcome = document.createElement('h1')
         const gameData = await dataResponse.json();
         const getStart = document.querySelector('.start__button');
         const choiceSection = document.querySelector('.choice__section');
+        createWelcome.textContent = gameData['start'].message
+        choiceSection.appendChild(createWelcome)
         getStart.addEventListener('click', (event) => {
+        
             startGame(event, getStart, choiceSection, gameData);
         });
     } catch (err) {
