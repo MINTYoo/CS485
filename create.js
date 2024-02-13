@@ -1,3 +1,5 @@
+let state = "start";
+
 async function startGame(event, getStart, choiceSection, getData) {
     event.preventDefault();
     handleChoices(getStart);
@@ -5,78 +7,52 @@ async function startGame(event, getStart, choiceSection, getData) {
     choiceSection.style.visibility = 'visible';
     choiceSection.style.display = 'block';
 
-    const choices = getData['start'].choices;
-    for (const key in choices) {
-        if (choices.hasOwnProperty(key)) {
-            const choice = choices[key];
-            createElement(choiceSection, choice);
-            const getEnterButton = document.querySelector(".input-button");
-            getEnterButton.addEventListener('click', (event)=>{
-                event.preventDefault();
-                getNextChoice(getEnterButton, getData);
-            });
-        }
-    }
+    renderChoices(choiceSection, getData[state], getData);
 }
 
-function createElement(parent, choice) {
+function createElement(parent, choice, data) {
     const newDiv = document.createElement("div");
     const newStrongTag = document.createElement("strong");
     const newButton = document.createElement("button");
 
     newStrongTag.textContent = choice.text;
-    newButton.textContent = choice.next;
-    newStrongTag.classList.add("input"); 
-    newButton.classList.add("input-button"); 
+    newDiv.classList.add("input");
+    newButton.textContent = choice.next; // Button text should match choice text
+    newButton.classList.add("input-button");
 
-    newDiv.appendChild(newStrongTag); 
-    newDiv.appendChild(newButton); 
+    newDiv.appendChild(newStrongTag);
+    newDiv.appendChild(newButton);
 
     parent.appendChild(newDiv);
+
+    newButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        state = choice.next; // Update current state
+        getNextChoice(data);
+    });
 }
 
-function transition(){
-    
-}
-
-async function getNextChoice(button, data) {
-    const buttonText = button.textContent;
-    const newData = data[buttonText];
-    if (newData) {
-        const message = newData.message;
-        const choices = newData.choices;
-        
-        // Display the message for the next state
-        console.log(message);
-        
-        const parent = document.querySelector('.choice__section');
-        parent.innerHTML = '';
-        
-        // Render new choices
-        for (const key in choices) {
-            if (choices.hasOwnProperty(key)) {
-                createElement(parent, choices[key]);
-            }
-        }
-        
-
-        // Check if the game is completed
-        if (Object.keys(newData.choices).length === 0) {
-            handleGameCompletion();
-        }
-    } else {
-        console.error("Invalid state:", buttonText);
+async function getNextChoice(data) {
+    const choiceSection = document.querySelector('.choice__section');
+    choiceSection.innerHTML = '';
+    renderChoices(choiceSection, data[state], data);
+    // Check if the game is completed
+    if (gameCompleted(data[state])) {
+        handleGameCompletion();
     }
 }
 
-function renderChoices(parent, stateData) {
+function gameCompleted(stateData) {
+    // Check if the game is completed based on the current state data
+    return stateData && stateData.choices.length === 0;
+}
+
+function renderChoices(parent, stateData, data) {
     const choices = stateData.choices;
     for (const choice of choices) {
-        createElement(parent, choice);
+        createElement(parent, choice, data);
     }
 }
-
-
 
 function handleGameCompletion() {
     // Display a message indicating the game is completed
@@ -88,7 +64,7 @@ function handleGameCompletion() {
     // Optionally, you can reset the game or perform any other actions here
 }
 
-async function getData() {
+async function initgame() {
     try {
         const dataResponse = await fetch("game.json");
         const gameData = await dataResponse.json();
@@ -99,6 +75,7 @@ async function getData() {
         });
     } catch (err) {
         console.log(err);
+        // Optionally, display a user-friendly error message to the user
     }
 }
 
@@ -107,4 +84,4 @@ function handleChoices(button) {
     button.style.display = 'none';
 }
 
-getData();
+initgame();
