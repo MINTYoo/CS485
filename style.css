@@ -6,10 +6,14 @@ padding: 0;
 font-family: 'Protest Riot', sans-serif;
 }
 
-.input-container, html, body {
+ body {
   height: 100%;
   display: flex; /* Use flexbox layout */
   flex-direction: column; /* Stack children vertically */
+  background: linear-gradient(#e66465, #9198e5);
+  background-attachment: fixed; /* Ensure background remains fixed */
+  
+  
 }
 .welcome{
     position: relative;
@@ -24,7 +28,6 @@ font-family: 'Protest Riot', sans-serif;
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: linear-gradient(#e66465, #9198e5);
     width: 100%;
     align-items: center;
     padding-top: 50px;
