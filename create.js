@@ -1,5 +1,9 @@
+
+
+
 let state = "start"; //global variable to keep track of user state
-let message = false;
+let message = false; //global variable to only populate message when needed
+let context = false
 function startGame(event, getStart, choiceSection, getData) {
     event.preventDefault();
     handleChoices(getStart);
@@ -16,17 +20,28 @@ function createElement(parent, choice, data) {
     const newButton = document.createElement("button");
 
     newStrongTag.textContent = choice.text;
+    console.log(data[state].context)
     newDiv.classList.add("input");
     newButton.textContent = choice.next; // Button text should match choice text
     newButton.classList.add("input-button");
 
     if(!message){
-    const createWelcome = document.createElement("h1")
+    const createWelcome = document.createElement("strong")
     createWelcome.textContent = data[state].message
+    createWelcome.style.fontSize = "29px"
     parent.appendChild(createWelcome)
     message = true;
     }
-    
+    if(!context){
+        const contextTag = document.createElement("strong")
+        contextTag.textContent = data[state].context
+        const createBreak = document.createElement('br')
+        parent.appendChild(createBreak)
+        contextTag.style.fontSize = "27px"
+        parent.appendChild(contextTag)
+        context = true;
+
+    }
     newDiv.appendChild(newStrongTag);
     newDiv.appendChild(newButton);
     parent.appendChild(newDiv);
@@ -73,7 +88,7 @@ function handleGameCompletion() {
 
 async function initgame() {
     try {
-        const dataResponse = await fetch("game.json");
+        const dataResponse = await fetch("test.json");
         const gameData = await dataResponse.json();
         const getStart = document.querySelector('.start__button');
         const choiceSection = document.querySelector('.choice__section');

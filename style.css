@@ -10,7 +10,7 @@ font-family: 'Protest Riot', sans-serif;
   height: 100%;
   display: flex; /* Use flexbox layout */
   flex-direction: column; /* Stack children vertically */
-  background: linear-gradient(#e66465, #9198e5);
+  /*background: linear-gradient(#e66465, #9198e5); */
   background-attachment: fixed; /* Ensure background remains fixed */
   
   
@@ -33,14 +33,15 @@ font-family: 'Protest Riot', sans-serif;
     padding-top: 50px;
     color: white;
     flex: 1;
+    justify-content: center;
 }
 .input-section{
     margin-top: 50px;
     justify-content: center;
     background-color: aliceblue;
     align-items: center;
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 1200px;
     text-align: center;
     border-width: 5px;
     border-style:solid ;
@@ -50,7 +51,7 @@ font-family: 'Protest Riot', sans-serif;
     flex-direction: column;
     color: rgb(255, 255, 255);
     background-color: #3c4fe0;
-    gap:100px
+    gap:100px;
 }
 
 
@@ -60,9 +61,11 @@ font-family: 'Protest Riot', sans-serif;
   border-radius: 10px;
   margin-top: auto;
   display: flex;
+  text-align: center;
   justify-content: space-between; /* Distributes items along the main axis with space between */
   align-items: center; /* Centers items along the cross axis */
   margin-bottom: 10px;
+
 }
 
 .input__text {
@@ -104,16 +107,16 @@ font-family: 'Protest Riot', sans-serif;
   font-size: 18px;
 }
 
-.button-29:focus {
+.input-button:focus {
   box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
 }
 
-.button-29:hover {
+.input-button:hover {
   box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
-.button-29:active {
+.input-button:active {
   box-shadow: #3c4fe0 0 3px 7px inset;
   transform: translateY(2px);
 }   
