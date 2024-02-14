@@ -1,89 +1,110 @@
-function startGame(event, gameStart, getStart, choiceSection, getData) {
+
+
+
+let state = "start"; //global variable to keep track of user state
+let message = false; //global variable to only populate message when needed
+let context = false
+function startGame(event, getStart, choiceSection, getData) {
     event.preventDefault();
-    handleChoices(getStart); // Passing the button element as an argument to handleChoices
-    if (!gameStart) {
-        console.log('starting game');
-        gameStart = true; // Modify the outer variable
+    handleChoices(getStart);
+    
+    choiceSection.style.visibility = 'visible';
+    choiceSection.style.display = 'block';
+
+    renderChoices(choiceSection, getData[state], getData);
+}
+
+function createElement(parent, choice, data) {
+    const newDiv = document.createElement("div");
+    const newStrongTag = document.createElement("strong");
+    const newButton = document.createElement("button");
+
+    newStrongTag.textContent = choice.text;
+    console.log(data[state].context)
+    newDiv.classList.add("input");
+    newButton.textContent = choice.next; // Button text should match choice text
+    newButton.classList.add("input-button");
+
+    if(!message){
+    const createWelcome = document.createElement("strong")
+    createWelcome.textContent = data[state].message
+    createWelcome.style.fontSize = "29px"
+    parent.appendChild(createWelcome)
+    message = true;
     }
-    console.log(`game start is ${gameStart}`); // Log the updated value
-    if (gameStart) {
-        console.log('entered');
-        choiceSection.style.visibility = 'visible'; // Show the choice__section
-        choiceSection.style.display = 'block';
+    if(!context){
+        const contextTag = document.createElement("strong")
+        contextTag.textContent = data[state].context
+        const createBreak = document.createElement('br')
+        parent.appendChild(createBreak)
+        contextTag.style.fontSize = "27px"
+        parent.appendChild(contextTag)
+        context = true;
 
+    }
+    newDiv.appendChild(newStrongTag);
+    newDiv.appendChild(newButton);
+    parent.appendChild(newDiv);
 
-        // Get choices for the current room
-        const choices = getData['start'].choices;
-        console.log(choices)
-        for (const key in choices) {
-            if (choices.hasOwnProperty(key)) { // Check if the property belongs to the object itself, not its prototype chain
-                //create new tags to display
-                const newDiv = document.createElement("div");
-                const newStrongTag = document.createElement("strong");
-                const newbutton = document.createElement("button");
+    newButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        state = choice.next; // Update current state
+        getNextChoice(data);
+    });
+}
 
-
-                //populate strong tag text
-                newStrongTag.textContent = choices[key]['text']
-               
-
-                //add my CSS properties
-                newStrongTag.classList.add("input"); 
-                newbutton.classList.add("input-button"); 
-                
-                //append new tags to div
-                newDiv.appendChild(newStrongTag); 
-                newDiv.appendChild(newbutton); 
-
-                //finally append the new div to the existing class
-                choiceSection.appendChild(newDiv);
-
-
-            }
-        }
-        
-        
-
-        // Create HTML elements for each choice
+async function getNextChoice(data) {
+    const choiceSection = document.querySelector('.choice__section');
+    choiceSection.innerHTML = '';
+    message = false
+    renderChoices(choiceSection, data[state], data);
+    // Check if the game is completed
+    if (gameCompleted(data[state])) {
+        handleGameCompletion();
     }
 }
 
-
-function handleNextChoice(getEnterButton, getData){
- 
+function gameCompleted(stateData) {
+    // Check if the game is completed based on the current state data
+    return stateData && stateData.choices.length === 0;
 }
 
-async function getData() {
-    let gameStart = false;
+function renderChoices(parent, stateData, data) {
+    const choices = stateData.choices;
+    for (const choice of choices) {
+        createElement(parent, choice, data);
+    }
+}
+
+function handleGameCompletion() {
+    // Display a message indicating the game is completed
+    const parent = document.querySelector('.choice__section');
+    const completionMessage = document.createElement("p");
+    completionMessage.textContent = "Congratulations! You have completed the game.";
+    parent.appendChild(completionMessage);
+
+    // Optionally, you can reset the game or perform any other actions here
+}
+
+async function initgame() {
     try {
-        const Data = await fetch("game.json");
-        const getData = await Data.json();
-        const getState = getData['start'].message
-        console.log(getState)
-        const getStart = document.querySelector('.start__button'); // Corrected class name
-        const choiceSection = document.querySelector('.choice__section'); // Selecting the choice__section div
+        const dataResponse = await fetch("test.json");
+        const gameData = await dataResponse.json();
+        const getStart = document.querySelector('.start__button');
+        const choiceSection = document.querySelector('.choice__section');
         getStart.addEventListener('click', (event) => {
-            startGame(event, gameStart, getStart, choiceSection, getData); // Call startGame with necessary arguments
-        });
-        const getEnterButton = document.querySelector("input-button")
-        getEnterButton.addEventListener('click', ()=>{
-            handleNextChoice(getEnterButton, getData)
+        
+            startGame(event, getStart, choiceSection, gameData);
         });
     } catch (err) {
         console.log(err);
+        // Optionally, display a user-friendly error message to the user
     }
 }
 
 function handleChoices(button) {
-    button.style.visibility = 'hidden'; // Hide the button that was clicked
-    button.style.display = 'none'; // Optional: Also hide the button
-
+    button.style.visibility = 'hidden';
+    button.style.display = 'none';
 }
 
-
-function populateChoices(game){
-    console.log(game['start'])
-}
-
-
-getData();
+initgame();

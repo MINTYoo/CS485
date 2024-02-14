@@ -6,10 +6,14 @@ padding: 0;
 font-family: 'Protest Riot', sans-serif;
 }
 
-.input-container, html, body {
+ body {
   height: 100%;
   display: flex; /* Use flexbox layout */
   flex-direction: column; /* Stack children vertically */
+  /*background: linear-gradient(#e66465, #9198e5); */
+  background-attachment: fixed; /* Ensure background remains fixed */
+  
+  
 }
 .welcome{
     position: relative;
@@ -24,20 +28,20 @@ font-family: 'Protest Riot', sans-serif;
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: linear-gradient(#e66465, #9198e5);
     width: 100%;
     align-items: center;
     padding-top: 50px;
     color: white;
     flex: 1;
+    justify-content: center;
 }
 .input-section{
     margin-top: 50px;
     justify-content: center;
     background-color: aliceblue;
     align-items: center;
-    height: 500px;
-    width: 500px;
+    height: 600px;
+    width: 1200px;
     text-align: center;
     border-width: 5px;
     border-style:solid ;
@@ -45,17 +49,31 @@ font-family: 'Protest Riot', sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
     color: rgb(255, 255, 255);
-
+    background-color: #3c4fe0;
+    gap:100px;
 }
 
 
-.input{
-    background-color: #3b3a3a;
-    width: 200px;
-    border-radius: 10px;
+.input {
+  background-color: #3b3a3a;
+  width: 500px;
+  border-radius: 10px;
+  margin-top: auto;
+  display: flex;
+  text-align: center;
+  justify-content: space-between; /* Distributes items along the main axis with space between */
+  align-items: center; /* Centers items along the cross axis */
+  margin-bottom: 10px;
+
 }
+
+.input__text {
+  flex-grow: 1; /* Allow the text to grow to take remaining space */
+  border-radius: 10px;
+  padding: 10px;
+}
+
 
 /* CSS */
 .input-button{
@@ -89,16 +107,16 @@ font-family: 'Protest Riot', sans-serif;
   font-size: 18px;
 }
 
-.button-29:focus {
+.input-button:focus {
   box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
 }
 
-.button-29:hover {
+.input-button:hover {
   box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
-.button-29:active {
+.input-button:active {
   box-shadow: #3c4fe0 0 3px 7px inset;
   transform: translateY(2px);
 }   
