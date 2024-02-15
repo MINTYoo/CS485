@@ -1,122 +1,274 @@
 {
-    "start": {
-      "message": "The Sinister Clown!",
-      "context": "You were just kidnapped and thrown in some cage",
-      "choices": [
-        {
-          
-          "text": "Look around the room",
-          "next": "lookAround"
-        },
-        {
-          "text": "Wait for help",
-          "next": "wait"
-        }
-      ]
-    }, 
-    "lookAround": {
-      "message": "You see a dead body butchered to the right",
-      "choices": [
-        {
-          "text": "scream for help",
-          "next": "scream"
-        },
-        {
-          "text": "calm down and think",
-          "next": "form a plan"
-        }
-      ]
-    },
-    "scream": {
-      "message": "You hear a loud drop and listen to loud footsteps",
-      "choices": [
-        {
-          "text": "Behave as the clown enters the room",
-          "next": "silent"
-        },
-        {
-          "text": "beg the clown for mercy and to let you out without hurting you",
-          "next": "beg"
-        }
-      ]
-    },
-    "wait": {
-      "message": "hours have passed and you know deep down no one is coming",
-      "choices": [
-        {
-          "text": "Stay calm and look around the room",
-          "next": "lookAround"
-        },
-        {
-          "text": "scream for help",
-          "next": "scream"
-        }
-      ]
-    },
-    "form a plan": {
-      "message": "The clown enters the room! ",
-      "choices": [
-        {
-          "text": "Try to talk to clown",
-          "next": "talkWithClown"
-        },
-        {
-          "text": "Start screaming for help",
-          "next": "scream"
-        },
-        {
-            "text": "act hostile toward the clown",
-            "next": "hostile"
-          }
-      ]
-    },
-    "talkWithClown": {
-      "message": "ask the clown to let you out",
-      "choices": [
-        {
-            "text": "clown crouches down to you and stares at you silently",
-            "next": "continue"
-        }
-      ]
-    },
-    "continue": {
-      "message": "the clown smirks and walks away to a table full of kithen supplies",
-      "choices": [
-        {
-          "text": "start to panic",
-          "next": "panic"
-        },
-        {
-            "text": "calm down and start to think of something",
-            "next": "continue to form plan"
-        }
-      ]
-    },
-    "continue to form plan": {
-      "message": "you noticed a shiny object where the clown crouched and smirked",
-      "choices": [
-        {
-          "text": "quickly pick the object as the clown is turned around",
-          "next": "pick object"
-        },
-        {
-            "text": "ignore it because your scared the clown might get hostile",
-            "next": "continue to wait"
-          }
-      ]
-    },
-    "continue to wait": {
-        "message": "you noticed a shiny object where the clown crouched and smirked",
-        "choices": [
-          {
-            "text": "quickly pick the object as the clown is turned around",
-            "next": "pick object"
-          },
-          {
-              "text": "ignore it because your scared the clown might get hostile",
-              "next": "continue to wait"
-            }
-        ]
+  "start": {
+    "message": "The Sinister Clown!",
+    "context": "You were just kidnapped and thrown in some cage",
+    "choices": [
+      {
+        "text": "Look around the room",
+        "next": "lookAround"
+      },
+      {
+        "text": "Wait for help",
+        "next": "wait"
       }
+    ]
+  },
+  "lookAround": {
+    "message": "You see a dead body butchered to the right",
+    "choices": [
+      {
+        "text": "scream for help",
+        "next": "scream"
+      },
+      {
+        "text": "calm down and think",
+        "next": "form a plan"
+      }
+    ]
+  },
+  "scream": {
+    "message": "You hear a loud drop and listen to footsteps creeping up",
+    "choices": [
+      {
+        "text": "Behave as the clown enters the room",
+        "next": "silent"
+      },
+      {
+        "text": "beg the clown for mercy and to let you out without hurting you",
+        "next": "beg"
+      }
+    ]
+  },
+  "beg": {
+    "message": "The clown smirks and walks to you with his tray full of bloody tools",
+    "context": "The clown tortures you", 
+    "escaped": false,
+    "choices": [
+      {
+        "text": "Play Again?",
+        "next": "playAgain"
+      },
+      {
+        "text": "No",
+        "next": "Exit"
+      }
+      
+    ]
+  },
+  "Exit": {
+    "message": "Thank you for playing!"
+  },
+  "wait": {
+    "message": "hours have passed and you know deep down no one is coming",
+    "choices": [
+      {
+        "text": "Stay calm and look around the room",
+        "next": "lookAround"
+      },
+      {
+        "text": "scream for help",
+        "next": "scream"
+      }
+    ]
+  },
+  "form a plan": {
+    "message": "The clown enters the room! ",
+    "clown-image": "<img src= ./pictures/clown.jpg> ",
+    "choices": [
+      {
+        "text": "Try to talk to clown",
+        "next": "talkWithClown"
+      },
+      {
+        "text": "Start screaming for help",
+        "next": "scream"
+      },
+      {
+        "text": "Act hostile toward the clown",
+        "next": "hostile"
+      }
+    ]
+  },
+  "talkWithClown": {
+    "message": "ask the clown to let you out",
+    "clown-stares-image": "<img src= ./pictures/clownStaresAtYou.jpg> ",
+    "choices": [
+      {
+        "text": "clown crouches down to you and stares at you silently",
+        "next": "continue"
+      }
+    ]
+  },
+  "continue": {
+    "message": "the clown smirks and walks away to a table full of kitchen supplies",
+    "clown-smirks": "<img src= ./pictures/smirk.jpg> ",
+    "choices": [
+      {
+        "text": "start to panic",
+        "next": "panic"
+      },
+      {
+        "text": "calm down and start to think of something",
+        "next": "continue to form plan"
+      }
+    ]
+  },
+  "continue to form plan": {
+    "message": "you noticed a shiny object where the clown crouched and smirked",
+    "choices": [
+      {
+        "text": "quickly pick the object as the clown is turned around",
+        "next": "pick object"
+      },
+      {
+        "text": "ignore it because your scared the clown might get hostile",
+        "next": "continue to wait"
+      }
+    ]
+  },
+  "pick object": {
+    "message": "You quickly grab the shiny object - a small but sharp piece of metal.",
+    "choices": [
+      {
+        "text": "Use the metal shard to try to free yourself from the cage",
+        "next": "escape"
+      },
+      {
+        "text": "Wait and observe the clown's actions",
+        "next": "observe"
+      }
+    ]
+  },
+  "escape": {
+    "message": "With determination, you begin to pry open the cage door using the metal shard.",
+    "choices": [
+      {
+        "text": "Continue to work on freeing yourself",
+        "next": "continueEscape"
+      },
+      {
+        "text": "Pause to listen for any sounds outside the room",
+        "next": "pauseEscape"
+      }
+    ]
+  },
+  "continueEscape": {
+    "message": "Despite the difficulty, you persist, inching closer to freedom with each effort.",
+    "choices": [
+      {
+        "text": "Keep working on freeing yourself",
+        "next": "continueEscape"
+      },
+      {
+        "text": "Listen for any signs of danger",
+        "next": "pauseEscape"
+      }
+    ]
+  },
+  "pauseEscape": {
+    "message": "You pause your efforts to listen for any signs of danger outside the room.",
+    "choices": [
+      {
+        "text": "Resume trying to escape",
+        "next": "continueEscape"
+      },
+      {
+        "text": "Remain still and quiet, assessing the situation",
+        "next": "assessSituation"
+      }
+    ]
+  },
+  "assessSituation": {
+    "message": "You take a moment to assess the situation, weighing your options carefully.",
+    "choices": [
+      {
+        "text": "Continue trying to escape",
+        "next": "continueEscape"
+      },
+      {
+        "text": "Wait for the clown's next move",
+        "next": "waitClown"
+      }
+    ]
+  },
+  "waitClown": {
+    "message": "You decide to wait and observe the clown's next move, staying alert for any opportunity to escape.",
+    "choices": [
+      {
+        "text": "Remain vigilant",
+        "next": "remainVigilant"
+      }
+    ]
+  },
+  "remainVigilant": {
+    "message": "As you wait, you hear the clown muttering to himself as he rummages through the items on the table.",
+    "choices": [
+      {
+        "text": "Stay focused on finding an escape route",
+        "next": "focusEscape"
+      }
+    ]
+  },
+  "focusEscape": {
+    "message": "With the clown distracted, you focus all your attention on finding a way to escape.",
+    "choices": [
+      {
+        "text": "Work quickly and quietly to free yourself",
+        "next": "escapeSuccess"
+      }
+    ]
+  },
+  "escapeSuccess": {
+    "message": "After a tense struggle, you manage to free yourself from the cage and cautiously make your way out of the room.",
+    "choices": [
+      {
+        "text": "Continue cautiously to find a way out of the building",
+        "next": "findExit"
+      }
+    ]
+  },
+  "findExit": {
+    "message": "You navigate through the dark corridors, heart pounding with every step, until you finally find an exit.",
+    "choices": [
+      {
+        "text": "Escape into the night and never look back",
+        "next": "theEnd"
+      }
+    ]
+  },
+  "theEnd": {
+    "message": "Congratulations! You've escaped the clutches of the sinister clown and survived to live another day.",
+    "choices": []
+  },
+  "observe": {
+    "message": "You decide to wait and observe the clown's actions, hoping for an opportunity to escape.",
+    "choices": [
+      {
+        "text": "Watch closely for any signs of danger",
+        "next": "watchDanger"
+      }
+    ]
+  },
+  "watchDanger": {
+    "message": "As you watch, the clown suddenly turns around, noticing your attempt to escape.",
+    "choices": [
+      {
+        "text": "Try to defend yourself",
+        "next": "defendYourself"
+      }
+    ]
+  },
+  "defendYourself": {
+    "message": "Before you can react, the clown lunges at you, overpowering your feeble attempts to defend yourself.",
+    "choices": [
+      {
+        "text": "Your fate is sealed as the clown captures you once again.",
+        "next": "clownCapturesYou"
+      }
+    ]
+  },
+  "clownCapturesYou": {
+    "message": "You find yourself back in the sinister clown's clutches, trapped once again in a nightmarish ordeal.",
+    "choices": []
   }
-  
+}

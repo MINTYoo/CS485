@@ -10,7 +10,6 @@ function startGame(event, getStart, choiceSection, getData) {
     
     choiceSection.style.visibility = 'visible';
     choiceSection.style.display = 'block';
-
     renderChoices(choiceSection, getData[state], getData);
 }
 
@@ -20,11 +19,11 @@ function createElement(parent, choice, data) {
     const newButton = document.createElement("button");
 
     newStrongTag.textContent = choice.text;
-    console.log(data[state].context)
     newDiv.classList.add("input");
     newButton.textContent = choice.next; // Button text should match choice text
     newButton.classList.add("input-button");
 
+  
     if(!message){
     const createWelcome = document.createElement("strong")
     createWelcome.textContent = data[state].message
@@ -41,6 +40,9 @@ function createElement(parent, choice, data) {
         parent.appendChild(contextTag)
         context = true;
 
+    }
+    if(data[state].escaped == false){
+        handleDied(data[state])
     }
     newDiv.appendChild(newStrongTag);
     newDiv.appendChild(newButton);
@@ -62,6 +64,17 @@ async function getNextChoice(data) {
     if (gameCompleted(data[state])) {
         handleGameCompletion();
     }
+    console.log(data[state].escaped)
+}
+
+function handleDied(stateData){
+    console.log()
+    const parent = document.querySelector('.choice__section');
+    const completionMessage = document.createElement("p");
+    completionMessage.textContent = stateData.context
+    console.log(completionMessage)
+    parent.appendChild(completionMessage);
+    
 }
 
 function gameCompleted(stateData) {
@@ -70,6 +83,7 @@ function gameCompleted(stateData) {
 }
 
 function renderChoices(parent, stateData, data) {
+    console.log(stateData.escaped)
     const choices = stateData.choices;
     for (const choice of choices) {
         createElement(parent, choice, data);
@@ -77,7 +91,7 @@ function renderChoices(parent, stateData, data) {
 }
 
 function handleGameCompletion() {
-    // Display a message indicating the game is completed
+    // Display a message indicating the game is complete
     const parent = document.querySelector('.choice__section');
     const completionMessage = document.createElement("p");
     completionMessage.textContent = "Congratulations! You have completed the game.";
