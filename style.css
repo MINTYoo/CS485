@@ -3,15 +3,18 @@
 *{
 margin: 0;
 padding: 0;
-font-family: 'Protest Riot', sans-serif;
+font-family: 'Times New Roman','Protest Riot', sans-serif;
+font-size: 23px;
 }
 
  body {
   height: 100%;
-  display: flex; /* Use flexbox layout */
-  flex-direction: column; /* Stack children vertically */
+  display: flex; 
+  flex-direction: column; 
   /*background: linear-gradient(#e66465, #9198e5); */
-  background-attachment: fixed; /* Ensure background remains fixed */
+  background-image: url(./pictures/scaryBackground.avif);
+  background-attachment: fixed; 
+  background-position: center;
   
   
 }
@@ -24,6 +27,9 @@ font-family: 'Protest Riot', sans-serif;
     height: 50px;
     padding-top: 50px;
 }
+.welcome h1{
+  font-size: 40px;
+}
 .input-container{
     display: flex;
     flex-direction: column;
@@ -34,6 +40,7 @@ font-family: 'Protest Riot', sans-serif;
     color: white;
     flex: 1;
     justify-content: center;
+
 }
 .input-section{
     margin-top: 50px;
@@ -57,25 +64,27 @@ font-family: 'Protest Riot', sans-serif;
 
 .input {
   background-color: #3b3a3a;
-  width: 500px;
+  width:700px;
+  height: 60px;
+  font-size: 20px;
   border-radius: 10px;
   margin-top: auto;
   display: flex;
   text-align: center;
-  justify-content: space-between; /* Distributes items along the main axis with space between */
-  align-items: center; /* Centers items along the cross axis */
+  justify-content: space-between; 
+  align-items: center; 
   margin-bottom: 10px;
+  overflow: hidden;
 
 }
 
 .input__text {
-  flex-grow: 1; /* Allow the text to grow to take remaining space */
+  flex-grow: 1;
   border-radius: 10px;
   padding: 10px;
 }
 
 
-/* CSS */
 .input-button{
   align-items: center;
   appearance: none;
@@ -87,7 +96,7 @@ font-family: 'Protest Riot', sans-serif;
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
+  font-family:monospace;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -99,10 +108,6 @@ font-family: 'Protest Riot', sans-serif;
   text-align: left;
   text-decoration: none;
   transition: box-shadow .15s,transform .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
 }
@@ -124,3 +129,4 @@ font-family: 'Protest Riot', sans-serif;
 .choice__section{
 visibility: hidden;
 }
+
