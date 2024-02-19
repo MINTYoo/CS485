@@ -1,90 +1,831 @@
 {
-    "start": {
-      "message": "Welcome to the Text Adventure Game! You wake up in a mysterious room. What would you like to do?",
-      "choices": [
+  "title": "The Sinister Clown's Lair",
+  "start": {
+    "context": "You awaken disoriented, realizing you've been snatched from your life and thrown into a cage.",
+    "choices": [
+      {
+        "text": "Look around the room",
+        "next": "lookAround"
+      },
+      {
+        "text": "Wait for help",
+        "next": "wait"
+      }
+    ]
+  },
+  "lookAround": {
+    "message": "To your horror, a disfigured corpse lies nearby, its flesh torn in a gruesome manner.",
+    "choices": [
+      {
+        "text": "Feel a primal urge to scream for help",
+        "next": "scream",
+        "stim": 4,
+        "dope": 1
+      },
+      {
+        "text": "Calm down and think",
+        "next": "form a plan",
+        "stim": 2
+      }
+    ]
+  },
+  "scream": {
+    "message": "A chilling silence hangs heavy, drowning your cries in despair as you scream for help.",
+    "choices": [
+      {
+        "text": "Behave as the clown enters the room",
+        "next": "silent",
+        "stim": 1
+      },
+      {
+        "text": "Beg the clown for mercy and to let you out without hurting you",
+        "next": "beg",
+        "stim": 2
+      }
+    ]
+  },
+  "beg": {
+    "message": "Your pleas provoct the clown's grin to widen, revealing rows of jagged bloody teeth.",
+    "context": "The clown tortures you until your very last breath.",
+    "escaped": false,
+    "choices": [
+      {
+        "text": "Want to play again?",
+        "next": "playAgain"
+      },
+      {
+        "text": "Exit the game",
+        "next": "Exit"
+      }
+    ]
+  },
+  "playAgain": {
+    "play": true
+  },
+  "Exit": {
+    "leave": true,
+    "message": "Thank you for playing!"
+  },
+  "wait": {
+    "message": "Hours have passed and you know deep down no one is coming.",
+    "choices": [
+      {
+        "text": "Stay calm and look around the room",
+        "next": "lookAround",
+        "stim": 1
+      },
+      {
+        "text": "Scream for help",
+        "next": "scream",
+        "stim": 4,
+        "dope": 2
+      }
+    ]
+  },
+  "form a plan": {
+    "message": "The clown enters the room! ",
+    "image": "./pictures/ClownEnters.webp",
+    "choices": [
+      {
+        "text": "Try to talk to clown",
+        "next": "talkWithClown",
+        "stim": 6,
+        "dope": 3
+        
+      },
+      {
+        "text": "Start screaming for help",
+        "next": "scream",
+        "stim": 4,
+        "dope": 2
+      },
+      {
+        "text": "Act hostile toward the clown",
+        "next": "hostile"
+      }
+    ]
+  },
+  "hostile": {
+    "message": "You decide to act hostile towards the clown, shouting insults and threats in a futile attempt to intimidate him.",
+    "choices": [
+      {
+        "text": "The clown reacts with violence",
+        "next": "clownOverpowers",
+        "stim": 5,
+        "dope": 5
+      }
+    ]
+  },
+  "clownOverpowers": {
+    "message": "Despite your best efforts to resist, the clown proves to be too strong, quickly subduing you.",
+    "choices": [
+      {
+        "text": "Accept defeat and await your fate.",
+        "next": "defeat",
+        "stim": 5
+      }
+    ]
+  },
+  "defeat": {
+    "message": "You find yourself at the mercy of the sinister clown, trapped in a nightmarish ordeal with no hope of escape.",
+    "choices": [
+      {
+        "text": "Your fate is sealed as the clown takes delight in tormenting you further.",
+        "next": "torment",
+        "stim": 5
+      }
+    ]
+  },
+  "torment": {
+    "escaped": false,
+    "message": "The clown's laughter echoes in your ears as he subjects you to unimaginable horrors, ensuring your suffering knows no end.",
+    "choices": [ {
+      "text": "Want to play again?",
+      "next": "playAgain"
+    },
+    {
+      "text": "Exit the game",
+      "next": "Exit"
+    }]
+  },
+  "talkWithClown": {
+    "message": "As you attempt to reason with the clown, his facial expression sends shivers down your spine.",
+    "choices": [
+      {
+        "text": "The clown crouches down to you and stares at you silently",
+        "next": "continue",
+        "stim": 4,
+        "dope": 1
+        
+      }
+    ]
+  },
+  "continue": {
+    "message": "The clown's sinister smirk sends a chill down your spine, as he turns away, leaving you to contemplate your impending doom.",
+    "clown-smirks": "./pictures/smirk.jpg",
+    "choices": [
+      {
+        "text": "Start to panic",
+        "next": "panic",
+        "stim": 4,
+        "dope": 2
+      },
+      {
+        "text": "Calm down and start to think of something",
+        "next": "continue to form plan",
+        "stim": 2,
+        "dope": 1
+      }
+    ]
+  },
+  "continue to form plan": {
+    "message": "You notice a shiny object",
+    "choices": [
+      {
+        "text": "Quickly pick up the object as the clown is turned around",
+        "next": "pick object",
+        "dope": 6
+
+      },
+      {
+        "text": "Ignore it because you're scared the clown might get hostile",
+        "next": "continue to wait",
+        "stim": 4
+      }
+    ]
+  },
+
+
+  "continue to wait": {
+    "message": "You hesitate, fearing the clown's reaction if you make a move. Time seems to stretch on endlessly as you stand frozen in place, the weight of your decision bearing down on you.",
+    "choices": [
+      {
+        "text": "Remain motionless and hope for the best",
+        "next": "remainMotionless"
+      }
+    ]
+  },
+  "remainMotionless": {
+    "message": "As you stand there, paralyzed by fear, the clown slowly turns his attention back to you.",
+    "choices": [
+      {
+        "text": "Attempt to defend yourself",
+        "next": "defend",
+        "stim": 2
+      }
+    ]
+  },
+  "defend": {
+    "message": "In a desperate attempt to ward off the advancing clown, you lash out with with your bare hands, but his strength is too much.",
+    "choices": [
+      {
+        "text": "Your efforts prove futile as the clown overpowers you, sealing your grim fate.",
+        "next": "grimFate",
+        "stim": 2
+      }
+    ]
+  },
+  "grimFate": {
+    "message": "You find yourself once again ensnared in the sinister clown's clutches, your fleeting hope extinguished as darkness envelops you.",
+    "choices": [
+      {
+        "text": "Beg the clown for mercy and to let you out without hurting you",
+        "next": "beg",
+        "stim": 5,
+        "dope": 1
+      }
+    ]
+  },
+  "pick object": {
+    "message": "Your trembling fingers grasp the glinting object, a shard of metal stained with the blood of previous victims. Instinctively, you hide the shard, concealing it within your clothes, preparing for an opportunity to use it.",
+    "choices": [
         {
-          "text": "Look around the room",
-          "next": "lookAround"
+            "text": "Fake being sick to lure the clown closer",
+            "next": "fakeSick",
+            "stim": 5
         },
         {
-          "text": "Try to open the door",
-          "next": "tryOpenDoor"
+            "text": "Continue to observe the clown's actions",
+            "next": "observe",
+            "stim": 3
         }
-      ]
-    },
-    "lookAround": {
-      "message": "You see a table, a chair, and a chest in the room. What would you like to do?",
-      "choices": [
+    ]
+},
+"fakeSick": {
+    "message": "You double over, clutching your stomach and groaning in feigned agony. The clown gets curious, it approaches cautiously, its guard momentarily lowered.",
+    "choices": [
         {
-          "text": "Examine the table",
-          "next": "examineTable"
+            "text": "Strike the clown with the concealed shard, aiming for a swift and decisive blow",
+            "next": "strikeClown",
+            "stim": 8
+        }
+    ]
+},
+"strikeClown": {
+    "message": "With a sudden burst of adrenaline, you lash out, driving the concealed shard into the clown's vulnerable areas. It recoils in surprise and pain, giving you a brief window of opportunity.",
+    "choices": [
+        {
+            "text": "You outmanuever the clown and run to his torture tray ",
+            "next": "sieze the opportunity",
+            "dope": 6
         },
         {
-          "text": "Sit on the chair",
-          "next": "sitOnChair"
-        },
+          "text": "You runaway",
+          "next": "escape",
+          "dope": 6
+      }
+    ]
+},
+"escape": {
+    "message": "You dash out of the cell trying to find the exit while in a state of panic",
+    "choices": [
+      {
+        "text": "continue running until you find the exit",
+        "next": "leave",
+        "stim": 2
+      },
+      {
+        "text": "you hear your phone ringing",
+        "next": "find phone"
+      }
+    ]
+  },
+  "find phone": {
+    "message": "You find your phone with all your belongings",
+    "choices": [
+      {
+        "text": "call 911",
+        "next": "call",
+        "stim": 2
+      },
+      {
+        "text": "take your stuff and leave",
+        "next": "leave",
+        "stim": 2
+      }
+    ]
+  },
+  "call": {
+    "message": "You tell the cops of your location, then you hear an echoing laugh. It's the clown. ",
+    "choices": [
+      {
+        "text": "Try to defend yourself",
+        "next": "defendYourself",
+        "stim": 2
+      },
+      {
+        "text": "take your stuff and leave",
+        "next": "leave",
+        "stim": 2
+      }
+    ]
+  },
+  "leave": {
+    "message": "Your heart races as you weigh the risk of escape against the certainty of the clown's wrath, every moment teetering on the edge of a nightmare.",
+    "choices": [
+      {
+        "text": "Continue trying to escape",
+        "next": "escape scene",
+        "stim": 2
+      }
+    ]
+  },
+  "escapeSuccess": {
+    "message": "After a tense struggle, you manage to free yourself from the cage and cautiously make your way out of the room.",
+    "choices": [
+      {
+        "text": "Continue cautiously to find a way out of the building",
+        "next": "findExit",
+        "dope": 15
+      }
+    ]
+  },
+  "findExit": {
+    "message": "You navigate through the dark corridors, heart pounding with every step, until you finally find an exit.",
+    "choices": [
+      {
+        "text": "Escape into the night and never look back",
+        "next": "theEnd",
+        "dope": 15
+      }
+    ]
+  },
+  "theEnd": {
+    "message": "Congratulations! You've escaped the clutches of the sinister clown and survived to live another day.",
+    "leave": true,
+    "choices": []
+  },
+  "observe": {
+    "message": "You decide to wait and observe the clown's actions, hoping for an opportunity to escape.",
+    "choices": [
+      {
+        "text": "Watch closely for any signs of danger",
+        "next": "continueWatching", 
+        "stim": 4
+      }
+    ]
+},
+"continueWatching": {
+    "message": "The clown walks away from the room, leaving you alone with your thoughts in the silence.",
+    "choices": [
+      {
+        "text": "Search the surroundings for anything useful",
+        "next": "searchSurroundings", 
+        "dope": 5
+      }
+    ]
+},
+"searchSurroundings": {
+    "message": "You cautiously explore the room, scanning for any potential tools or means of escape.",
+    "choices": [
+      {
+        "text": "Scavenge the corpse that was in the cell with you",
+        "next": "scavengeCorpse", 
+        "stim": 4
+      }
+    ]
+},
+"scavengeCorpse": {
+    "message": "You approach the lifeless body in the corner, finding a pocket knife and a cellphone tucked into its clothing.",
+    "choices": [
+      {
+        "text": "Retrieve the pocket knife and cellphone",
+        "next": "retrieveTools", 
+        "stim": 4,
+        "dope": 10
+      }
+    ]
+},
+"retrieveTools": {
+    "message": "With a mix of fear and determination, you pocket the knife and cellphone, feeling a glimmer of hope.",
+    "choices": [
+      {
+        "text": "Stand up cautiously, ready to defend yourself if needed",
+        "next": "standUp", 
+        "dope": 7
+      }
+    ]
+},
+"standUp": {
+    "message": "As you rise to your feet, a chilling presence fills the room, and you turn to face the clown, its twisted grin inches from your own.",
+    "choices": [
+      {
+        "text": "Prepare to defend yourself with the pocket knife",
+        "next": "defendYourself", 
+        "stim": 5
+      }
+    ]
+},
+  "defendYourself": {
+    "message": "Before you can react, the clown lunges at you. You frantically try to defend yourself, but your efforts are futile against its overwhelming strength.",
+    "choices": [
         {
-          "text": "Open the chest",
-          "next": "openChest"
+            "text": "Your fate is sealed as the clown captures",
+            "next": "clownCapturesYou",
+            "stim": 8
         }
-      ]
-    },
-    "tryOpenDoor": {
-      "message": "The door is locked. You need a key to open it.",
-      "choices": [
+    ]
+},
+"clownCapturesYou": {
+    "message": "You find yourself back in the same state as at the beginning, with no hope.",
+    "choices": [
         {
-          "text": "Go back",
-          "next": "start"
+            "text": "Beg the clown for mercy, your voice trembling with fear as you plead for release from this living nightmare.",
+            "next": "begScene",
+            "stim": 6
         }
-      ]
-    },
-    "examineTable": {
-      "message": "You find a key on the table!",
-      "choices": [
+    ]
+},
+"begScene": {
+    "message": "Your pleas cause the clown's twisted grin widens, relishing in your terror. Its laughter fills the air.",
+    "choices": [
         {
-          "text": "Take the key",
-          "next": "takeKey"
-        },
-        {
-          "text": "Leave it",
-          "next": "lookAround"
+            "text": "Continue to beg, desperate for any glimmer of mercy from the monstrous clown.",
+            "next": "continued",
+            "stim": 4
         }
-      ]
-    },
-    "takeKey": {
-      "message": "You take the key. Now, what would you like to do?",
-      "choices": [
+    ]
+},
+"continued": {
+    "message": "Suddenly, the sound of approaching sirens pierces the air, breaking the silence. The clown's laughter turns to a low growl of frustration as it realizes its time is running out.",
+    "escaped": false,
+    "choices": [
         {
-          "text": "Try to open the door",
-          "next": "tryOpenDoorWithKey"
-        },
-        {
-          "text": "Continue exploring the room",
-          "next": "lookAround"
-        }
-      ]
-    },
-    "tryOpenDoorWithKey": {
-      "message": "You use the key to open the door. Congratulations, you've escaped the room!",
-      "choices": []
-    },
-    "sitOnChair": {
-      "message": "You sit on the chair and take a rest.",
-      "choices": [
-        {
-          "text": "Get up and continue exploring the room",
-          "next": "lookAround"
-        }
-      ]
-    },
-    "openChest": {
-      "message": "The chest is empty.",
-      "choices": [
-        {
-          "text": "Go back",
-          "next": "lookAround"
-        }
-      ]
-    }
-  }
+            "text": "Watch in horror as the clown's demeanor shifts into rage and panic.",
+            "next": "playAgain"
   
+        },
+        {
+            "text": "Exit the game, unable to bear the terror any longer.",
+            "next": "Exit"
+        }
+    ]
+},
+"silent": {
+    "message": "You hold your breath as the clown approaches, hoping he hasn't noticed your presence.",
+    "choices": [
+      {
+        "text": "Remain still and silent",
+        "next": "clownApproaches",
+        "stim": 3
+      }
+    ]
+  },
+  "clownApproaches": {
+    "message": "With a sinister grin the clown opens the cell, the clown's gaze meets yours, sending a chill down your spine. You realize escape is futile as the clown enters the cage",
+    "choices": [
+      {
+        "text": "Accept your fate",
+        "next": "Continue Scene",
+        "stim": 5
+      }
+    ]
+  },
+  "Continue Scene": {
+    "message": "All of a sudden your hear your phone ring in the back of the room",
+    "choices": [
+      {
+        "text": "For a brief moment, the sinister clown is distracted",
+        "next": "phone scene",
+        "dope": 10
+      }
+    ]
+  },
+  "phone scene": {
+    "message": "Your phone rings loudly, breaking the silence of the room. The clown's attention shifts momentarily as he seems intrigued by the unexpected sound.",
+    "choices": [
+      {
+        "text": "Take advantage of the distraction and look for an escape route",
+        "next": "sieze the opportunity",
+        "dope": 15
+      },
+      {
+        "text": "Ignore the phone and continue to focus on the clown",
+        "next": "continueClownApproaches",
+        "stim": 10
+      }
+    ]
+  },
+  "sieze the opportunity": {
+    "message": "Seizing the opportunity, you quickly outmanuever the clown and run to his torture tray ",
+    "choices": [
+      {
+        "text": "pick up knife",
+        "next": "knife",
+        "dope": 10
+      },
+      {
+        "text": "pick up metal bat",
+        "next": "metal bat",
+        "dope": 10
+      },
+      {
+        "text": "pick up hammer",
+        "next": "hammer",
+        "dope": 10
+      },
+      {
+        "text": "pick up glock",
+        "next": "glock",
+        "dope": 10
+      }
+    ]
+  },
+  "knife": {
+    "message": "You picked up the Knife",
+    "choices": [
+      {
+        "text": "You yeet the knife at the clown",
+        "next": "yeet knife",
+        "dope": 10
+      },
+      {
+        "text": "Threaten the clown with the knife",
+        "next": "threat scene",
+        "dope": 10
+      }
+    ]
+  },
+  "metal bat": {
+    "message": "You picked up the Bat",
+    "choices": [
+      {
+        "text": "You bash the clown in the head",
+        "next": "bash clown",
+        "dope": 10
+      },
+      {
+        "text": "Threaten the clown with the Bat",
+        "next": "threat scene",
+        "dope": 10
+      }
+    ]
+  },
+  "hammer": {
+    "message": "You picked up the Hammer",
+    "choices": [
+      {
+        "text": "You bash the clown in the head",
+        "next": "bash clown",
+        "dope": 10
+      },
+      {
+        "text": "Threaten the clown with the hammer",
+        "next": "threat scene",
+        "dope": 10
+      }
+    ]
+  },
+  "glock": {
+    "message": "You picked up the unregistered glock",
+    "choices": [
+      {
+        "text": "Attempt to take down clown",
+        "next": "gun takedown",
+        "dope": 10
+      },
+      {
+        "text": "You yeet the gun at the clown",
+        "next": "yeet gun",
+        "dope": 10
+      },
+      {
+        "text": "Threaten the clown with the gun",
+        "next": "threat scene",
+        "dope": 10
+      }
+    ]
+  },
+  "yeet knife": {
+    "message": "The handle hits him in the face instead of piercing it",
+    "choices": [
+      {
+        "text": "The clown laughs and runs at you",
+        "next": "beg",
+        "stim": 10
+      }
+    ]
+  },
+  "threat scene": {
+    "message": "You threaten the clown by making him stay in the cell and locking it",
+    "choices": [
+      {
+        "text": "The clown is furious and begins to scream",
+        "next": "escape scene",
+        "dope": 10
+      }
+    ]
+  },
+  "bash clown": {
+    "message": "You bash the clown to the point till he can no longer move",
+    "choices": [
+      {
+        "text": "The clown is down",
+        "next": "escape scene",
+        "dope": 10
+      }
+    ]
+  },
+  "yeet gun": {
+    "message": "As the clown proccesses you yeeting the gun, he gets hit in the head",
+    "choices": [
+      {
+        "text": "The clown still distored by the decision",
+        "next": "run",
+        "dope": 5,
+        "stim": 5
+      }
+    ]
+  },
+  "run": {
+    "message": "You quicly run despite of making the most horrible choice known to mankind",
+    "choices": [
+      {
+        "text": "Continue escape",
+        "next": "escape scene",
+        "dope": 5
+      }
+    ]
+  },
+  "gun takedown": {
+    "message": "The injure the clown in multiple areas in the body",
+    "choices": [
+      {
+        "text": "The clowns body collapses to the ground",
+        "next": "escape scene",
+        "dope": 10
+      }
+    ]
+  },
+  "escape scene": {
+    "image": "./pictures/darkRoom.jpg",
+    "message": "As you manuever the horrific sites of the house, you notice multiple hostages.",
+    "choices": [
+      {
+        "text": "You decide to free all the victims",
+        "next": "free victims",
+        "dope": 10,
+        "stim": 5
+
+      },
+      {
+        "text": "Forget about them and try to save yourself",
+        "next": "save yourself",
+        "stim": 5
+      }
+    ]
+  },
+  "save yourself": {
+    "message": "Ignoring the plight of the other hostages, you focus solely on your own survival, determined to escape the clown's clutches at any cost.",
+    "choices": [
+      {
+        "text": "Make a break for it and attempt to escape alone",
+        "next": "escapeAlone",
+        "stim" : 5
+      }
+    ]
+  },
+  "escapeAlone": {
+    "image": "./pictures/scaryHall.jpg",
+    "message": "With single-minded determination, you sprint through the dark corridors, every step echoing with the pounding of your heart as you seek a way out of the nightmare.",
+    "choices": [
+      {
+        "text": "Find what appears to be an exit and rush towards it",
+        "next": "rushExit",
+        "dope": 10
+      }
+    ]
+  },
+  "rushExit": {
+    "message": "You burst through what seems to be a door leading to freedom, only to find yourself face to face with the sinister clown, his malevolent grin sending shivers down your spine as he recaptures you.",
+    "choices": [
+      {
+        "text": "Accept your grim fate",
+        "next": "beg",
+        "stim": 10
+      }
+    ]
+  },
+  "free victims": {
+    "message": "With courage fueling your actions, you release the other hostages from their torment, their eyes filled with gratitude and disbelief as they realize they're finally free.",
+    "choices": [
+      {
+        "text": "Lead the hostages to safety",
+        "next": "lead to safety",
+        "stim": 2,
+        "dope": 5
+      }
+    ]
+  },
+  "lead to safety": {
+    "message": "You guide the grateful hostages through the labyrinthine corridors, each step bringing you closer to freedom and away from the nightmare you've endured.",
+    "choices": [
+      {
+        "text": "Escape into the night and never look back",
+        "next": "EscapeWithHostages",
+        "dope": 10
+      }
+    ]
+  },
+  "EscapeWithHostages": {
+    "message": "Congratulations! You've not only escaped the clutches of the sinister clown but also freed others from their captivity. You're a true hero, and your bravery will be remembered.",
+    "leave": true,
+    "choices": []
+  },
+  "continueClownApproaches": {
+    "message": "You ignore the ringing phone, knowing that escape is your only priority. You keep a wary eye on the approaching clown, ready to seize any opportunity to break free.",
+    "choices": [
+      {
+        "text": "Remain vigilant for any chance to escape",
+        "next": "remainVigilant"
+      }
+    ]
+  },
+  "remainVigilant": {
+    "message": "The clown continues to enter the cell",
+    "choices": [
+      {
+       "text": "Beg for mercy",
+       "next": "beg",
+       "stim": 10
+      },
+      {
+        "text": "attempt to fight",
+        "next": "fight",
+        "stim": 10
+      }
+    ]
+  },
+  "fight": {
+    "message": "Again, you hear the phone ring in the background",
+    "choices": [
+      {
+       "text": "This time sieze the opportunity to run",
+       "next": "sieze the opportunity",
+       "dope": 10
+      },
+      {
+        "text": "continue to fight",
+        "next": "defendYourself",
+        "stim": 10
+      }
+    ]
+  },
+  "panic": {
+    "message": "A surge of panic grips you, your heart pounding in your chest as your mind races with terror. You struggle to maintain control, but the overwhelming fear threatens to consume you.",
+    "choices": [
+      {
+        "text": "Try to calm yourself and think rationally",
+        "next": "calmDown",
+        "stim": 10
+      },
+      {
+        "text": "Continue to let panic drive your actions",
+        "next": "continuePanic",
+        "stim": 10
+      }
+    ]
+  },
+  "calmDown": {
+    "message": "Taking slow, deep breaths, you force yourself to calm down, pushing back the rising tide of panic. With a clear mind, you focus on finding a way out of this nightmare.",
+    "choices": [
+      {
+        "text": "Search for an escape route",
+        "next": "searchEscapeRoute",
+        "stim": 5,
+        "dope": 2
+      }
+    ]
+  },
+  "continuePanic": {
+    "message": "The panic intensifies, clouding your thoughts and making it difficult to think clearly. Desperation grips you as you frantically search for any means of escape, heedless of the danger.",
+    "choices": [
+      {
+        "text": "Keep searching for an escape route in a panic-stricken frenzy",
+        "next": "searchEscapeRoute",
+        "stim": 10
+      }
+    ]
+  },
+  "searchEscapeRoute": {
+    "message": "With determination fueled by adrenaline, you scour the room for any possible means of escape, your eyes darting from corner to corner in search of salvation.",
+    "choices": [
+      {
+        "text": "Find a potential escape route",
+        "next": "potentialEscape",
+        "stim": 5
+      }
+    ]
+  },
+  "potentialEscape": {
+    "message": "Your frantic search yields a small shiny object in the distance",
+    "choices": [
+      {
+        "text": "You walk up the front of the cage acting innocently",
+        "next": "pick object",
+        "dope": 20
+      }
+    ]
+  }
+
+}
